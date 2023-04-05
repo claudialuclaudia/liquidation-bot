@@ -1,0 +1,50 @@
+networks:
+  active: kovanTestnet ethMainnet polygonMaticMainnet optimismMainnet arbitrumMainnet
+  kovanTestnet:
+    chain_id: 42
+    aave_lending_pool_v2: '0x88757f2f99175387aB4C6a4b3067c77A695b0349' # lending_pool_addresses_provider
+    weth: '0xd0a1e359811322d97991e03f863a0c30c2cf029c'
+    compound_cETH: '0x41b5844f4680a8c38fbb695b7f9cfd1f64474a72'
+    compound_comptroller: '0x5eae89dc1c671724a672ff0630122ee834098657'
+    # https://aave.github.io/aave-addresses/kovan.json
+    # Aave uses their own testnet tokens to ensure they are good
+    # find the most up to date in the above
+    # aave_link_token: '0xAD5ce863aE3E4E9394Ab43d4ba0D80f419F61789'
+    # link_eth_price_feed: '0x3Af8C569ab77af5230596Acf0E8c2F9351d24C38'
+    rpc_url: ${KOVAN_RPC_URL}
+  ethMainnet:
+    chain_id: 1337
+    aave_lending_pool_v2: '0xB53C1a33016B2DC2fF3653530bfF1848a515c8c5'
+    # weth: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+    # For mainnet, the link token is the same as the aave token
+    # link_token: '0x514910771af9ca656af840dff83e8264ecf986ca'
+    # aave_link_token: '0x514910771af9ca656af840dff83e8264ecf986ca'
+    # link_eth_price_feed: '0xDC530D9457755926550b59e8ECcdaE7624181557'
+    rpc_url: ${MAINNET_RPC_URL}
+  polygonMaticMainnet:
+    aave_lending_pool_v2: '0xd05e3E715d945B59290df0ae8eF85c1BdB684744'
+    aave_lending_pool_v3: '0xa97684ead0e402dC232d5A977953DF7ECBaB3CDb'
+    rpc_url: ${POLYGON_RPC_URL}
+  optimismMainnet:
+    aave_lending_pool_v3: '0xa97684ead0e402dC232d5A977953DF7ECBaB3CDb'
+    rpc_url: ${OPTIMISM_RPC_URL}
+  arbitrumMainnet:
+    aave_lending_pool_v3: '0xa97684ead0e402dC232d5A977953DF7ECBaB3CDb'
+    rpc_url: ${ARBITRUM_RPC_URL}
+
+wallets:
+  from_key: ${PRIVATE_KEY}
+  from_mnemonic: ${MNEMONIC}
+
+# automatically fetch contract sources from Etherscan
+autofetch_sources: True
+
+# require OpenZepplin Contracts v3.0.0
+dependencies:
+  - OpenZeppelin/openzeppelin-contracts@3.0.0
+
+# path remapping to support OpenZepplin imports with NPM-style path
+compiler:
+  solc:
+    remappings:
+      - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@3.0.0"

@@ -1,0 +1,6 @@
+eth-brownie>=1.12.0,<2.0.0
+web3
+pyaml_env
+# dotenv
+python-dotenv #for pip https://www.codegrepper.com/code-examples/python/how+to+install+dotenv+python
+pymongo
